@@ -59,7 +59,7 @@ foreach($entry in $SrcFiles)
         $uri = New-Object System.Uri($DesFile)
         $webclient.UploadFile($uri, $SrcFullname)
     }
-    catch [Net.WebException]{
+    catch{
     $ErrorMessage = $_.Exception.Message
     $FailedItem = $_.Exception.ItemName
     Write-Output $ErrorMessage
