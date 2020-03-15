@@ -60,10 +60,10 @@ foreach($entry in $SrcFiles)
         $webclient.UploadFile($uri, $SrcFullname)
     }
     catch{
-    $ErrorMessage = $_.Exception.Message
-    $FailedItem = $_.Exception.ItemName
-    Write-Output $ErrorMessage
-    Write-Output $FailedItem
+    Write-Output $_.Exception.Message
+    Write-Output $_.Exception.ItemName
+    Write-Output $_.Exception.InnerException
+    Write-Output $_.Exception.StackTrace
     }
 }
 # Upload Files - Stop
