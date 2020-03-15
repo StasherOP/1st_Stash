@@ -16,6 +16,6 @@ $Srcfolders = $SrcEntries | Where-Object{$_.PSIsContainer}
 $SrcFiles = $SrcEntries | Where-Object{!$_.PSIsContainer}
 foreach($item in $SrcFiles){ 
     "Uploading $item..." 
-    $uri = New-Object System.Uri($ftp+$item.Name) 
+    #$uri = New-Object System.Uri($ftp+$item.Name) 
     $webclient.UploadFile($uri, $item.FullName) 
  } 
