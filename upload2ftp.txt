@@ -60,9 +60,13 @@ foreach($entry in $SrcFiles)
         $webclient.UploadFile($uri, $SrcFullname)
     }
     catch{
+    Write-Output Message
     Write-Output $_.Exception.Message
+    Write-Output ItemName
     Write-Output $_.Exception.ItemName
+    Write-Output Inner Exception
     Write-Output $_.Exception.InnerException
+    Write-Output Stack Trace
     Write-Output $_.Exception.StackTrace
     }
 }
