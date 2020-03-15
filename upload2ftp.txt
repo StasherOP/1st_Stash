@@ -55,8 +55,15 @@ foreach($entry in $SrcFiles)
     $DesFile = $SrcFullname -replace $SrcFilePath,$FTPHost
     $DesFile = $DesFile -replace "\\", "/"
     Write-Output $DesFile
-
-    $uri = New-Object System.Uri($DesFile)
-    $webclient.UploadFile($uri, $SrcFullname)
+    try{
+        $uri = New-Object System.Uri($DesFile)
+        $webclient.UploadFile($uri, $SrcFullname)
+    }
+    catch [Net.WebException]{
+    $ErrorMessage = $_.Exception.Message
+    $FailedItem = $_.Exception.ItemName
+    Write-Output $ErrorMessage
+    Write-Output $FailedItem
+    }
 }
 # Upload Files - Stop
