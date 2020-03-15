@@ -11,7 +11,7 @@ $webclient = New-Object System.Net.WebClient
 $webclient.Credentials = New-Object System.Net.NetworkCredential($user,$pass)  
  
 #list every file 
-$SrcEntries = Get-ChildItem $UploadFolder -Recurse
+$SrcEntries = Get-ChildItem $Dir -Recurse
 $Srcfolders = $SrcEntries | Where-Object{$_.PSIsContainer}
 $SrcFiles = $SrcEntries | Where-Object{!$_.PSIsContainer}
 foreach($item in $SrcFiles){ 
