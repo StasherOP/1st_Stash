@@ -1,7 +1,7 @@
 # FTP Server Variables
 $FTPHost = 'ftp://0.tcp.ngrok.io:17906/'
-$FTPUser = 'root' #username
-$FTPPass = '4CM2Ld4j@TVsGKFLasYY' #pwd
+$FTPUser = 'sammy' #username
+$FTPPass = 'Q4!vfRH@9df-Xqx9Uox8' #pwd
 
 #Directory where to find pictures to upload
 $UploadFolder = "C:\Users\nicol\Desktop\3d\"
