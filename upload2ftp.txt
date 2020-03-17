@@ -4,7 +4,7 @@ $FTPUser = 'sammy' #username
 $FTPPass = 'Q4!vfRH@9df-Xqx9Uox8' #pwd
 
 #Directory where to find pictures to upload
-$UploadFolder = "C:\Users\nicol\Desktop\3d\"
+$UploadFolder = "C:\Users\nicol\Desktop\3d\0Done\"
 
 $webclient = New-Object System.Net.WebClient
 $webclient.Credentials = New-Object System.Net.NetworkCredential($FTPUser,$FTPPass)
